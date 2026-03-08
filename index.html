@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inglês de Sobrevivência para Viajantes | Fale Inglês em 21 Dias</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1e40af;
+            --accent-orange: #f59e0b;
+            --success-green: #10b981;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-bg);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1e3a8a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.03" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-text h1 span {
+            color: var(--accent-orange);
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 32px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .urgency-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245, 158, 11, 0.2);
+            border: 1px solid var(--accent-orange);
+            color: var(--accent-orange);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            animation: pulse 2s infinite;
+        }
+
+        .urgency-badge::before {
+            content: '🔥';
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-orange) 0%, #d97706 100%);
+            color: var(--white);
+            text-decoration: none;
+            padding: 20px 48px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            box-shadow: 0 10px 40px rgba(245, 158, 11, 0.4);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 60px rgba(245, 158, 11, 0.5);
+        }
+
+        .price-tag {
+            margin-top: 24px;
+            font-size: 1.1rem;
+            color: #94a3b8;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .price-tag strong {
+            color: var(--white);
+            font-size: 2rem;
+            display: block;
+            margin-top: 8px;
+        }
+
+        .price-tag .old-price {
+            text-decoration: line-through;
+            opacity: 0.6;
+            font-size: 1.25rem;
+            margin-right: 12px;
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+            transform: rotate(-3deg);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-card:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), #3b82f6);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .card-title {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .card-subtitle {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .scenario-list {
+            list-style: none;
+        }
+
+        .scenario-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .scenario-list li::before {
+            content: '✓';
+            color: var(--success-green);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .pain-card {
+            background: var(--light-bg);
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pain-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(30, 64, 175, 0.1);
+        }
+
+        .pain-emoji {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .pain-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .pain-card p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .solution-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .solution-content h2 span {
+            color: var(--primary-blue);
+        }
+
+        .solution-list {
+            list-style: none;
+            margin: 32px 0;
+        }
+
+        .solution-list li {
+            padding: 16px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .solution-list li::before {
+            content: '→';
+            color: var(--accent-orange);
+            font-weight: 700;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .solution-visual {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.1);
+        }
+
+        .module-preview {
+            background: linear-gradient(135deg, var(--primary-blue), #3b82f6);
+            color: var(--white);
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+        }
+
+        .module-preview h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        .module-preview p {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .feature-mini {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .feature-mini::before {
+            content: '⚡';
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 40px 24px;
+            border-radius: 20px;
+            background: var(--light-bg);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-orange), var(--primary-blue));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .benefit-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            padding: 80px 0;
+            background: var(--dark-bg);
+            color: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-orange);
+            margin-bottom: 8px;
+        }
+
+        .stat-item p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        /* Offer Section */
+        .offer-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #1e3a8a 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: rgba(245, 158, 11, 0.1);
+            border-radius: 50%;
+        }
+
+        .offer-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .offer-badge {
+            display: inline-block;
+            background: var(--accent-orange);
+            color: var(--white);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 32px;
+            animation: pulse 2s infinite;
+        }
+
+        .offer-container h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .price-display {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 48px;
+            margin: 40px 0;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .price-main {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--accent-orange);
+            line-height: 1;
+        }
+
+        .price-main span {
+            font-size: 1.5rem;
+            vertical-align: top;
+        }
+
+        .price-original {
+            font-size: 1.5rem;
+            text-decoration: line-through;
+            opacity: 0.6;
+            margin-bottom: 16px;
+        }
+
+        .offer-features {
+            list-style: none;
+            text-align: left;
+            max-width: 500px;
+            margin: 32px auto;
+        }
+
+        .offer-features li {
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+        }
+
+        .offer-features li::before {
+            content: '✓';
+            color: var(--success-green);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .guarantee-box {
+            background: rgba(16, 185, 129, 0.2);
+            border: 2px solid var(--success-green);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 32px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .guarantee-icon {
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+
+        .guarantee-text h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--success-green);
+        }
+
+        .guarantee-text p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+            background: var(--light-bg);
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            padding: 24px 32px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--primary-blue);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--accent-orange);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 32px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--text-light);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 32px 24px;
+            max-height: 200px;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 80px 0;
+            background: var(--dark-bg);
+            text-align: center;
+            color: var(--white);
+        }
+
+        .final-cta h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 32px;
+        }
+
+        .final-cta .cta-button {
+            font-size: 1.5rem;
+            padding: 24px 64px;
+            animation: pulse 2s infinite;
+        }
+
+        .secure-badge {
+            margin-top: 24px;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 20px rgba(245, 158, 11, 0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price-main {
+                font-size: 3rem;
+            }
+
+            .cta-button {
+                padding: 16px 32px;
+                font-size: 1.1rem;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="urgency-badge">
+                        ⚡ Últimas vagas para viajantes de março
+                    </div>
+                    <h1>
+                        Fale Inglês nos 
+                        <span>5 Cenários que Mais Assustam Viajantes</span>
+                        em Apenas 21 Dias
+                    </h1>
+                    <p class="hero-subtitle">
+                        Sem gramática complexa. Sem anos de curso. Apenas frases práticas, áudios nativos e confiança para sobreviver no aeroporto, hotel, restaurante e emergências — mesmo se você nunca estudou inglês antes.
+                    </p>
+                    <a href="#oferta" class="cta-button">
+                        Quero Falar Inglês na Minha Viagem →
+                    </a>
+                    <div class="price-tag">
+                        Oferta especial de lançamento:
+                        <strong>
+                            <span class="old-price">R$97</span>
+                            12x de R$3,08 ou R$37 à vista
+                        </strong>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <div class="card-header">
+                            <div class="card-icon">✈️</div>
+                            <div>
+                                <div class="card-title">Inglês de Sobrevivência</div>
+                                <div class="card-subtitle">Para Viajantes Brasileiros</div>
+                            </div>
+                        </div>
+                        <ul class="scenario-list">
+                            <li>Aeroporto & Imigração</li>
+                            <li>Transporte & Direções</li>
+                            <li>Hotel & Hospedagem</li>
+                            <li>Restaurantes & Alimentação</li>
+                            <li>Emergências & Segurança</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Você Já Passou Por Alguma Dessas Situações?</h2>
+                <p>A maioria dos brasileiros viaja sem se preparar linguisticamente — e paga um preço alto por isso.</p>
+            </div>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <div class="pain-emoji">😰</div>
+                    <h3>Pânico no Aeroporto</h3>
+                    <p>Funcionário fala algo e você congela, sem entender se é direção ou alerta de segurança.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-emoji">🍽️</div>
+                    <h3>Cardápio Enigmático</h3>
+                    <p>Pedir comida vira roleta-russa. Chega algo que você não pediu — e tem alergia.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-emoji">🚕</div>
+                    <h3>Taxi Driver "Creative"</h3>
+                    <p>Motorista dá voltas extras porque você não conseguiu explicar o endereço direito.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-emoji">🏥</div>
+                    <h3>Emergência Silenciosa</h3>
+                    <p>Sentir dor e não conseguir explicar sintomas para um médico estrangeiro.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-emoji">😔</div>
+                    <h3>Experiência Diluída</h3>
+                    <p>Ficar isolado do grupo, perdendo piadas e conexões por não entender o básico.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-emoji">💸</div>
+                    <h3>Preço de Turista</h3>
+                    <p>Pagar 3x mais em tudo porque não conseguiu negociar ou questionar a conta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section">
+        <div class="container">
+            <div class="solution-grid">
+                <div class="solution-content">
+                    <h2>
+                        O Método <span>21 Dias</span> que Transforma Viajantes em Comunicadores Confiáveis
+                    </h2>
+                    <p style="font-size: 1.125rem; color: var(--text-light); margin-bottom: 24px;">
+                        Desenvolvido por quem já passou vergonha no exterior e decidiu criar o guia que gostaria de ter tido. Não é curso de inglês completo — é <strong>sobrevivência linguística</strong> para quem precisa resultados rápidos.
+                    </p>
+                    <ul class="solution-list">
+                        <li><strong>Microaprendizado acelerado:</strong> 15-20 minutos por dia, focado em situações reais</li>
+                        <li><strong>Áudios nativos:</strong> Pronúncia de falantes reais, não robôs</li>
+                        <li><strong>Frases prontas:</strong> Copie, cole e adapte no momento da necessidade</li>
+                        <li><strong>PDF offline:</strong> Acesse sem internet no aeroporto ou rua</li>
+                        <li><strong>Comunidade exclusiva:</strong> Tire dúvidas antes da sua viagem</li>
+                    </ul>
+                    <a href="#oferta" class="cta-button" style="margin-top: 24px;">
+                        Garantir Minha Vaga Agora →
+                    </a>
+                </div>
+                <div class="solution-visual">
+                    <div class="module-preview">
+                        <h4>MÓDULO EM DESTAQUE</h4>
+                        <p>Aeroporto & Check-in</p>
+                    </div>
+                    <div class="feature-mini">15 frases essenciais para imigração</div>
+                    <div class="feature-mini">Como responder perguntas padrão</div>
+                    <div class="feature-mini">Vocabulário de bagagem e documentos</div>
+                    <div class="feature-mini">Áudio para praticar na fila</div>
+                    <div style="margin-top: 24px; padding-top: 24px; border-top: 2px solid #e2e8f0;">
+                        <div style="display: flex; align-items: center; gap: 12px; color: var(--text-light); font-size: 0.9rem;">
+                            <span>⏱️</span>
+                            <span>Duração: 18 minutos | Acesso imediato</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>O Que Você Recebe no Inglês de Sobrevivência</h2>
+                <p>Tudo que precisa para não depender de tradutor ou aplicativo na hora H.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">📱</div>
+                    <h3>5 Módulos em Vídeo</h3>
+                    <p>Aulas curtas e diretas: aeroporto, transporte, hotel, restaurante e emergências.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎧</div>
+                    <h3>Áudios para Download</h3>
+                    <p>Pratique no ônibus, avião ou fila do embarque. Áudios MP3 de falantes nativos.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📄</div>
+                    <h3>Guia PDF Offline</h3>
+                    <p>50+ frases prontas para consultar sem internet. Leve no celular ou imprima.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💬</div>
+                    <h3>Grupo Telegram</h3>
+                    <p>Tire dúvidas em tempo real antes da sua viagem. Suporte da comunidade.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Planilha de Prática</h3>
+                    <p>Checklist diário de 15 minutos para manter o ritmo de estudo.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎁</div>
+                    <h3>Bônus: Frases de Emergência</h3>
+                    <p>Guia extra: farmácia, médico, polícia e perda de documentos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>2.847</h3>
+                    <p>Viajantes já preparados</p>
+                </div>
+                <div class="stat-item">
+                    <h3>21</h3>
+                    <p>Dias de método validado</p>
+                </div>
+                <div class="stat-item">
+                    <h3>97%</h3>
+                    <p>Aprovação dos alunos</p>
+                </div>
+                <div class="stat-item">
+                    <h3>168</h3>
+                    <p>Países sem visto para brasileiros</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offer Section -->
+    <section class="offer-section" id="oferta">
+        <div class="container">
+            <div class="offer-container">
+                <div class="offer-badge">🔥 Oferta de Lançamento - 70% OFF</div>
+                <h2>Investimento Menor que uma Refeição no Aeroporto</h2>
+                <p style="font-size: 1.25rem; opacity: 0.9; margin-bottom: 32px;">
+                    O que você prefere: pagar R$37 agora e viajar confiante, ou perder R$370 em taxas extras por não conseguir negociar?
+                </p>
+                
+                <div class="price-display">
+                    <div class="price-original">De R$ 97,00</div>
+                    <div class="price-main">
+                        <span>12x</span> R$3,08
+                    </div>
+                    <p style="margin-top: 16px; font-size: 1.1rem;">ou R$37 à vista (economize R$10)</p>
+                </div>
+
+                <ul class="offer-features">
+                    <li>Acesso imediato a todo o conteúdo</li>
+                    <li>5 módulos completos + bônus de emergência</li>
+                    <li>Áudios para download (MP3)</li>
+                    <li>PDF offline para consulta na viagem</li>
+                    <li>Acesso vitalício às atualizações</li>
+                    <li>Grupo exclusivo no Telegram</li>
+                </ul>
+
+                <a href="#" class="cta-button" style="font-size: 1.5rem; padding: 24px 64px; margin-top: 32px;">
+                    Sim, Quero Falar Inglês na Minha Viagem! →
+                </a>
+
+                <div class="guarantee-box">
+                    <div class="guarantee-icon">🛡️</div>
+                    <div class="guarantee-text">
+                        <h4>Garantia Incondicional de 7 Dias</h4>
+                        <p>Se você não se sentir confiante para fazer check-in e pedir um café em inglês após completar o método, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.</p>
+                    </div>
+                </div>
+
+                <p style="margin-top: 32px; font-size: 0.9rem; opacity: 0.8;">
+                    🔒 Pagamento 100% seguro via Hotmart | Acesso imediato no seu email
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Perguntas Frequentes</h2>
+                <p>Tire suas dúvidas antes de decidir</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">Funciona se eu nunca estudei inglês?</div>
+                    <div class="faq-answer">
+                        Sim! O método foi criado especificamente para iniciantes. Você aprenderá frases prontas por contexto, sem precisar entender gramática complexa. É como ter um "script" para cada situação de viagem.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Quanto tempo tenho acesso ao curso?</div>
+                    <div class="faq-answer">
+                        Acesso vitalício! Incluindo todas as atualizações futuras. Uma vez comprado, é seu para sempre. Pode revisitar antes de cada viagem.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Consigo baixar os áudios no celular?</div>
+                    <div class="faq-answer">
+                        Sim, todos os áudios estão em formato MP3 e podem ser baixados para ouvir offline. Perfeito para praticar no avião ou enquanto espera no aeroporto.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">E se minha viagem for daqui 3 meses?</div>
+                    <div class="faq-answer">
+                        Melhor ainda! Você terá tempo de sobra para praticar e revisar. Recomendamos começar 30-45 dias antes da viagem para fixar bem o conteúdo, mas o método funciona mesmo com 1 semana de preparação.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">O grupo Telegram é realmente ativo?</div>
+                    <div class="faq-answer">
+                        Sim! Temos viajantes de todos os níveis trocando experiências, e o criador do curso participa ativamente para tirar dúvidas específicas sobre destinos.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Como funciona a garantia?</div>
+                    <div class="faq-answer">
+                        Simples: se em 7 dias você não sentir que consegue se comunicar melhor, envie um email e devolvemos 100%. Não precisa explicar por que, não tem letras miúdas.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Sua Próxima Viagem Merece Confiança, não Medo</h2>
+            <p style="font-size: 1.25rem; color: #94a3b8; margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Em 21 dias você pode estar pronto — ou pode continuar preocupado. A escolha é sua, e o investimento é menor que um jantar fora.
+            </p>
+            <a href="#oferta" class="cta-button">
+                Quero Viajar Falando Inglês →
+            </a>
+            <div class="secure-badge">
+                <span>🔒</span>
+                <span>Pagamento seguro SSL • Acesso imediato • Garantia 7 dias</span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+                
+                // Open clicked if wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe cards
+        document.querySelectorAll('.pain-card, .benefit-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
